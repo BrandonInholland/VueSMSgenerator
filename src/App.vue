@@ -1,15 +1,18 @@
 <template>
-  <div>
-    <Home />
+  <div id="app">
+    <GetAllClasses />
+    <navigation />
+    <router-view />
   </div>
 </template>
 
 <script>
-import Home from "./components/Home.vue";
+import GetAllClasses from "./components/GetAllClasses.vue";
+import Navigation from './components/Navigation.vue';
 
 export default {
   components: {
-    Home
+    Navigation
 }
 };
 </script>

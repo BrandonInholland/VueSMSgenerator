@@ -1,24 +1,27 @@
 <template>
   <div class="container">
-    <div class="message-table-container" v-if="messages.length > 0">
+    <div class="message-table-container" v-if="classrooms.length > 0">
       <table class="message-table">
         <tr class="table-header">
-          <th>ID</th>
-          <th>Lecturer Email</th>
-          <th>Reciepent</th>
-          <th>Message</th>
+          <th>Classname</th>
+          <th>Class ID</th>
+          <th>Student_id</th>
         </tr>
-        <tr class="table-row" v-for="message in messages">
-          <td class="table-cell">{{ message.messageID }}</td>
-          <td class="table-cell">{{ message.lecturerEmail }}</td>
-          <td class="table-cell">{{ message.to }}</td>
-          <td class="table-cell">{{ message.content }}</td>
+        <tr class="table-row" v-for="classroom in classrooms">
+          <td class="table-cell">{{ classroom.classname }}</td>
+          <td class="table-cell">{{ classroom.id }}</td>
+          <!-- <td class="table-cell">{{ classroom.student.id }}</td> -->
+          <td>{{ classroom.student.join(', ') }}</td>
+          
           
         </tr>
       </table>
     </div>
     <div v-else class="no-message">No messages found.</div>
   </div>
+  <router-link to="/AddClasses">
+      <button class="add-button">Add Classroom</button>
+    </router-link>
 </template>
 <style scoped>
 .container {
@@ -64,21 +67,21 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      messages: []
+      classrooms: []
     };
   },
   mounted() {
-    this.fetchMessages();
+    this.fetchClassrooms();
     setInterval(() => {
-      this.fetchMessages();
+      this.fetchClassrooms();
     }, 5000); // reload every 5 seconds
   },
   methods: {
-    fetchMessages() {
+    fetchClassrooms() {
       axios
-        .get("http://localhost:8080/messages")
+        .get("http://localhost:8000/api/classrooms")
         .then(response => {
-          this.messages = response.data;
+          this.classrooms = response.data;
         })
         .catch(error => {
           console.error(error);
