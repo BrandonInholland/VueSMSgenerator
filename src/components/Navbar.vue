@@ -20,6 +20,12 @@
             >FilterByLecturerMail</router-link
           >
         </li>
+        <li class="nav-item">
+          <!-- add a router link to the products page (don't use the a tag!) -->
+          <router-link to="/getallclasses" class="nav-link" active-class="active"
+            >GetAllClasses</router-link
+          >
+        </li>
       </ul>
     </div>
   </nav>

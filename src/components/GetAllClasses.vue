@@ -10,46 +10,45 @@
         <tr class="table-row" v-for="classroom in classrooms">
           <td class="table-cell">{{ classroom.classname }}</td>
           <td class="table-cell">{{ classroom.id }}</td>
-          <!-- <td class="table-cell">{{ classroom.student.id }}</td> -->
           <td>{{ classroom.student.join(', ') }}</td>
-          
+          <td class="table-cell">
+  <button class="delete-button" @click="deleteClassroom(classroom.classname)">Delete</button>
+</td>
           
         </tr>
       </table>
     </div>
-    <div v-else class="no-message">No messages found.</div>
+    <div v-else class="no-message">No classes found.</div>
   </div>
   <router-link to="/AddClasses">
-      <button class="add-button">Add Classroom</button>
-    </router-link>
+    <button class="add-button">Add Classroom</button>
+  </router-link>
 </template>
 <style scoped>
-.container {
-  margin: 20px auto;
-  text-align: center;
-}
+  .container {
+    margin: 20px auto;
+    text-align: center;
+  }
   .message-table-container {
     margin-top: 20px;
     display: inline-block;
   }
   .message-table {
-  border-collapse: collapse;
-  width: 100%;
-  border-radius: 5px;
-}
-
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 5px;
+  }
   .table-header {
-  background-color: #0078D7;
-  color: white;
-}
-
+    background-color: #0078D7;
+    color: white;
+  }
   .table-header th {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-size: 18px;
-  font-weight: bold;
-}
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    font-weight: bold;
+  }
   .table-row td {
     padding: 8px;
     text-align: left;
@@ -60,10 +59,19 @@
     font-size: 18px;
     font-weight: bold;
   }
+  .delete-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
 </style>
-
 <script>
-import axios from 'axios';
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -86,8 +94,21 @@ export default {
         .catch(error => {
           console.error(error);
         });
-    }
-  }
+    },
+    
+  
+  deleteClassroom(classname) {
+  axios
+    .delete("http://localhost:8000/api/classrooms/" + classname)
+    .then(response => {
+      console.log(response);
+      this.fetchClassrooms();
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
+},
 };
 </script>
 
