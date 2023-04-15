@@ -66,8 +66,7 @@ export default {
   }
 
   button {
-    width: 100px;
-    height: 35px;
+    width: 100px;    
     background-color: dodgerblue;
     color: white;
     border: none;

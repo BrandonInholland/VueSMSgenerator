@@ -9,6 +9,7 @@ export default {
 </script>
 
 <template>
+  
    <navigation />
    <RouterView />
 </template>

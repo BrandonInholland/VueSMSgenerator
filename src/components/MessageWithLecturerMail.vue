@@ -64,12 +64,6 @@ export default {
     border-radius: 4px;
     width: 300px;
   }
-  button {
-    padding: 8px;
-    background-color: #ddd;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+  
 </style>
 
