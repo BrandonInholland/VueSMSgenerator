@@ -21,9 +21,14 @@
         <a class="nav-link" href="getallclasses">All Classes</a>
       </li>    
       <li class="nav-item">
-        <a class="nav-link" href="getalllecturers">All Lecturers</a>
-      </li>
-      
+        <a class="nav-link" href="addstudent">Add students</a>
+      </li>   
+      <li class="nav-item">
+        <a class="nav-link" href="getstudent">Get students</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="deletestudent">Delete students</a>
+      </li> 
     </ul>
   </div>
 </nav>

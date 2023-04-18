@@ -7,6 +7,10 @@ import GetAllClasses from '../components/GetAllClasses.vue';
 import AddClasses from '../components/AddClasses.vue';
 import AddLecturer from '../components/AddLecturer.vue';
 import GetAllLecturers from '../components/GetAllLecturers.vue';
+import AddStudent from '../components/AddStudent.vue';
+import GetStudent from '../components/GetStudentById.vue';
+import DeleteStudent from '../components/StudentSoftDelete.vue';
+
 
 
 const routes = [
@@ -17,6 +21,9 @@ const routes = [
   { path: '/addclasses', component: AddClasses },  
   { path: '/AddLecturer', component: AddLecturer },
   { path: '/getalllecturers', component: GetAllLecturers },
+  { path: '/addstudent', component: AddStudent }, 
+  { path: '/getstudent', component: GetStudent }, 
+  { path: '/deletestudent', component: DeleteStudent }, 
 ];
 
 const router = createRouter({
