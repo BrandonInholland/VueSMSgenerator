@@ -20,6 +20,9 @@
       <li class="nav-item">
         <a class="nav-link" href="getallclasses">All Classes</a>
       </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="getalllecturers">All Lecturers</a>
+      </li>
       
     </ul>
   </div>
