@@ -1,30 +1,37 @@
 <template>
     <div class="container">
+      <caption>
+        <h2 style="white-space: nowrap;">Add a classroom?</h2>
+      </caption>
       <div class="add-form">
         <form @submit.prevent="addClassroom">
           <input type="text" v-model="newClassroom.classname" placeholder="Classname">
           <input type="text" v-model="newClassroom.id" placeholder="Class ID">
-          <button type="submit">Add Classroom</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
-      <div class="message-table-container" v-if="classrooms.length > 0">
-        <table class="message-table">
-          <tr class="table-header">
-            <th>Classname</th>
-            <th>Class ID</th>
-            <th>Student_id</th>
+      <div class="d-flex justify-content-center">
+      <table class="table table-dark mx-auto">
+        <thead>
+          <tr>
+            <th scope="col">Classname</th>
+            <th scope="col">Class ID</th>
+            <th scope="col">Student_ID</th>            
           </tr>
+        </thead>
+        <tbody>
           <tr class="table-row" v-for="classroom in classrooms">
             <td class="table-cell">{{ classroom.classname }}</td>
             <td class="table-cell">{{ classroom.id }}</td>
-            <!-- <td class="table-cell">{{ classroom.student.id }}</td> -->
-            <td>{{ classroom.student.join(', ') }}</td>
+            <td>{{ classroom.student.join(', ') }}</td>            
           </tr>
-        </table>
-      </div>
-      <div v-else class="no-message">No messages found.</div>
+        </tbody>
+      </table>
     </div>
+  </div>
+      
   </template>
+  
   <script>
   import axios from 'axios';
   export default {

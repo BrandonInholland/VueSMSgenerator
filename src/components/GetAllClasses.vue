@@ -1,65 +1,37 @@
 <template>
   <div class="container">
-    <div class="message-table-container" v-if="classrooms.length > 0">
-      <table class="message-table">
-        <tr class="table-header">
-          <th>Classname</th>
-          <th>Class ID</th>
-          <th>Student_id</th>
-        </tr>
-        <tr class="table-row" v-for="classroom in classrooms">
-          <td class="table-cell">{{ classroom.classname }}</td>
-          <td class="table-cell">{{ classroom.id }}</td>
-          <td>{{ classroom.student.join(', ') }}</td>
-          <td class="table-cell">
-  <button class="delete-button" @click="deleteClassroom(classroom.classname)">Delete</button>
-</td>
-          
-        </tr>
+    <h2 style="white-space: nowrap;">List of Classrooms</h2>
+    <div class="d-flex justify-content-center">
+      <table class="table table-dark mx-auto">
+        <thead>
+          <tr>
+            <th scope="col">Classname</th>
+            <th scope="col">Class ID</th>
+            <th scope="col">Student_ID</th>
+            <th scope="col">Delete?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row" v-for="classroom in classrooms">
+            <td class="table-cell">{{ classroom.classname }}</td>
+            <td class="table-cell">{{ classroom.id }}</td>
+            <td>{{ classroom.student.join(', ') }}</td>
+            <td class="table-cell">
+              <button class="btn btn-danger" @click="deleteClassroom(classroom.classname)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
-    <div v-else class="no-message">No classes found.</div>
+    <div class="text-center">
+      <a class="btn btn-primary" href="AddClasses" role="button">Add Class?</a>
+    </div>
   </div>
-  <router-link to="/AddClasses">
-    <button class="add-button">Add Classroom</button>
-  </router-link>
 </template>
+
 <style scoped>
-  .container {
-    margin: 20px auto;
-    text-align: center;
-  }
-  .message-table-container {
-    margin-top: 20px;
-    display: inline-block;
-  }
-  .message-table {
-    border-collapse: collapse;
-    width: 100%;
-    border-radius: 5px;
-  }
-  .table-header {
-    background-color: #0078D7;
-    color: white;
-  }
-  .table-header th {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  .table-row td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  .no-message {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  .delete-button {
+
+.delete-button {
   background-color: #f44336;
   color: white;
   border: none;
@@ -75,7 +47,11 @@ import axios from "axios";
 export default {
   data() {
     return {
-      classrooms: []
+      classrooms: [
+        { id: 2, classname: 'IT', student: ['John Doe', 'Jane Smith'] },
+        { id: 3, classname: 'IT', student: ['Bob Johnson', 'Alice Williams'] },
+        { id: 4, classname: 'IT', student: ['Mike Brown', 'Mary Davis'] },
+      ],
     };
   },
   mounted() {
@@ -95,20 +71,20 @@ export default {
           console.error(error);
         });
     },
-    
-  
-  deleteClassroom(classname) {
-  axios
-    .delete("http://localhost:8000/api/classrooms/" + classname)
-    .then(response => {
-      console.log(response);
-      this.fetchClassrooms();
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-},
+
+
+    deleteClassroom(classname) {
+      axios
+        .delete("http://localhost:8000/api/classrooms/" + classname)
+        .then(response => {
+          console.log(response);
+          this.fetchClassrooms();
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  },
 };
 </script>
 
