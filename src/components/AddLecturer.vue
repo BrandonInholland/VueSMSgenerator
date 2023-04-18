@@ -8,6 +8,9 @@
                 <input type="text" v-model="newLecturer.first_name" placeholder="First Name">
                 <input type="text" v-model="newLecturer.last_name" placeholder="Last Name">
                 <input type="text" v-model="newLecturer.email" placeholder="Email">
+                <select v-model="newLecturer.classrooms">
+                    <option v-for="c in classrooms" :value="c.id">{{ c.classname }}</option>
+                </select>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
@@ -18,6 +21,7 @@
                         <th scope="col">Lecturer First Name</th>
                         <th scope="col">Lecturer Last Name</th>
                         <th scope="col">Lecturer Email</th>
+                        <th scope="col">Class</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +29,7 @@
                         <td class="table-cell">{{ lects.first_name }}</td>
                         <td class="table-cell">{{ lects.last_name }}</td>
                         <td class="table-cell">{{ lects.email }}</td>
+                        <td>{{ lects.classroom.classname }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -41,8 +46,10 @@ export default {
             newLecturer: {
                 first_name: '',
                 last_name: '',
-                email: ''
-            }
+                email: '',
+                classroom: ''
+            },
+            classrooms:[]
         }
     },
     mounted() {
@@ -57,7 +64,7 @@ export default {
                 .post("http://localhost:8000/api/lecturer", this.newLecturer)
                 .then(response => {
                     this.lecturer.push(response.data);
-                    this.newLecturer = { first_name: '', last_name: '', email: '' };
+                    this.newLecturer = { first_name: '', last_name: '', email: '', classroom:'' };
                 })
                 .catch(error => {
                     console.error(error);

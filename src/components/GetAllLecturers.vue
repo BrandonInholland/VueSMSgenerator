@@ -8,6 +8,8 @@
                         <th scope="col">Lecturer First Name</th>
                         <th scope="col">Lecturer Last Name</th>
                         <th scope="col">Lecturer Email</th>
+                        <th scope="col">Class</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -15,6 +17,7 @@
                         <td class="table-cell">{{ lects.first_name }}</td>
                         <td class="table-cell">{{ lects.last_name }}</td>
                         <td class="table-cell">{{ lects.email }}</td>
+                        <td>{{ lects.classroom.join(', ') }}</td>
                         <td class="table-cell">
               <button class="btn btn-danger" @click="deleteLecturer(lects.first_name)">Delete</button>
             </td>
@@ -45,11 +48,7 @@ export default {
     data() {
         return {
             lecturer: [],
-            newLecturer: {
-                first_name: '',
-                last_name: '',
-                email: ''
-            }
+            
         }
     },
     mounted() {
