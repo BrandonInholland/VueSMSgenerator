@@ -10,11 +10,13 @@ import GetAllLecturers from '../components/GetAllLecturers.vue';
 import AddStudent from '../components/AddStudent.vue';
 import GetStudent from '../components/GetStudentById.vue';
 import DeleteStudent from '../components/StudentSoftDelete.vue';
+import FrontPage from '../components/FrontPage.vue';
 
 
 
 const routes = [
   { path: '/', component: Home },
+  { path: '/frontpage', component: FrontPage },
   { path: '/getbymessageid', component: MessageItem },
   { path: '/messageWithlecturermail', component: lecturerEmail },
   { path: '/getallclasses', component: GetAllClasses },
