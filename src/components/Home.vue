@@ -32,6 +32,7 @@
     </div> 
 
   <!-- MessageItem -->
+  <div class="container mt-5">
     <div class="row">
       <div class="col">
         <caption>
@@ -65,12 +66,13 @@
         </table>
       </div>
     </div>
+    </div>
 
     
   <!-- MessageWithLecturerMail -->
-  
+  <div class ="container">
     <div class="row">
-      <div class="col">
+      <div class="col offset-md-6">
         <caption>
         <h2 style="white-space: nowrap;">Find a Message by LecturerMail</h2>
       </caption>
@@ -91,16 +93,10 @@
               <th>Content</th>
             </tr>
           </thead>
-          <tbody>
-            <tr v-for="message in messages" :key="message.messageID">
-              <td>{{ message.messageID }}</td>
-              <td>{{ message.lecturerEmail }}</td>
-              <td>{{ message.to }}</td>
-              <td>{{ message.content }}</td>
-            </tr>
-          </tbody>
+          
         </table>
       </div>
+    </div>
     </div>
   
 </template>

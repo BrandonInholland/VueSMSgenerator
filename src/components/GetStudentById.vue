@@ -100,7 +100,20 @@
       return {
         studentId: '',
         student: null,
-        students: [],
+        students: [{
+    "studentId": 1,
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john.doe@example.com",
+    "classroom_id": 101
+  },
+  {
+    "studentId": 2,
+    "fname": "Jane",
+    "lname": "Doe",
+    "email": "jane.doe@example.com",
+    "classroom_id": 102
+  },],
         newStudent: {
           classroom_id: '',
           email: '',

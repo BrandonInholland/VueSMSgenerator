@@ -19,27 +19,68 @@
                         <td class="table-cell">{{ lects.email }}</td>
                         <td>{{ lects.classroom.join(', ') }}</td>
                         <td class="table-cell">
-              <button class="btn btn-danger" @click="deleteLecturer(lects.first_name)">Delete</button>
-            </td>
+                            <button class="btn btn-danger" @click="deleteLecturer(lects.first_name)">Delete</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="text-center">
-      <a class="btn btn-primary" href="AddLecturer" role="button">Add Lecturer?</a>
-    </div>
+            
         </div>
     </div>
+
+    <div class="container">
+        <caption>
+            <h2 style="white-space: nowrap;">Add a Lecturer?</h2>
+        </caption>
+        <div class="add-form">
+            <form @submit.prevent="addLecturer">
+                <input type="text" v-model="newLecturer.first_name" placeholder="First Name">
+                <input type="text" v-model="newLecturer.last_name" placeholder="Last Name">
+                <input type="text" v-model="newLecturer.email" placeholder="Email">
+                <select v-model="newLecturer.classrooms">
+                    <option v-for="c in classrooms" :value="c.id">{{ c.classname }}</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <caption>
+                    <h2 style="white-space: nowrap;">Find a Lecturer by ID</h2>
+                </caption>
+                <div class="input-group mb-3">
+                    <input type="number" v-model="lecturerId" placeholder="Enter Lecturer ID" class="form-control">
+                    <div class="input-group-append">
+                        <button @click.prevent="getLecturerById(lecturerId)" class="btn btn-primary">Get Lecturer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+    <h2>Add Lecturer to Class</h2>
+    <form @submit.prevent="addLecturer">
+      <label for="lecturerID">Lecturer ID:</label>
+      <input type="number" id="lecturerID" v-model="lecturerID">
+      <label for="classID">Class ID:</label>
+      <input type="number" id="classID" v-model="classID">
+      <button type="submit">Add Lecturer</button>
+    </form>
+    <div v-if="message">{{ message }}</div>
+  </div>
 </template>
 <style scoped>
-
 .delete-button {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
 }
 </style>
 <script>
@@ -48,7 +89,13 @@ export default {
     data() {
         return {
             lecturer: [],
-            
+            newLecturer: {
+                first_name: '',
+                last_name: '',
+                email: '',
+                classroom: ''
+            },
+            classrooms: []
         }
     },
     mounted() {
@@ -58,7 +105,7 @@ export default {
         }, 5000); // reload every 5 seconds
     },
     methods: {
-        
+
         fetchLecturers() {
             axios
                 .get("http://localhost:8000/api/lecturer")
@@ -69,17 +116,51 @@ export default {
                     console.error(error);
                 });
         },
+        getStudentById(id) {
+            axios
+                .get(`http://localhost:8000/api/lecturer/${id}`)
+                .then(response => {
+                    this.lecturer = response.data;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
+        addLecturer() {
+            axios
+                .post("http://localhost:8000/api/lecturer", this.newLecturer)
+                .then(response => {
+                    this.lecturer.push(response.data);
+                    this.newLecturer = { first_name: '', last_name: '', email: '', classroom: '' };
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+        },
         deleteLecturer(first_name) {
-      axios
-        .delete("http://localhost:8000/api/lecturer/" + first_name)
-        .then(response => {
-          console.log(response);
-          this.fetchLecturers();
-        })
-        .catch(error => {
-          console.error(error);
+            axios
+                .delete("http://localhost:8000/api/lecturer/" + first_name)
+                .then(response => {
+                    console.log(response);
+                    this.fetchLecturers();
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
+        async addLecturer() {
+      try {
+        const response = await axios.post('/api/add-lecturer-to-class', {
+          lecturerID: this.lecturerID,
+          classID: this.classID
         });
+        this.message = response.data;
+      } catch (error) {
+        this.message = error.message;
+      }
     }
+  
     }
 }
 </script>
