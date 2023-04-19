@@ -23,9 +23,21 @@
         </tbody>
       </table>
     </div>
-    <div class="text-center">
-      <a class="btn btn-primary" href="AddClasses" role="button">Add Class?</a>
-    </div>
+   
+  </div>
+
+  <div class="container">
+      <caption>
+        <h2 style="white-space: nowrap;">Add a classroom?</h2>
+      </caption>
+      <div class="add-form">
+        <form @submit.prevent="addClassroom">
+          <input type="text" v-model="newClassroom.classname" placeholder="Classname">
+          <input type="text" v-model="newClassroom.id" placeholder="Class ID">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      
   </div>
 </template>
 
@@ -52,6 +64,10 @@ export default {
         { id: 3, classname: 'IT', student: ['Bob Johnson', 'Alice Williams'] },
         { id: 4, classname: 'IT', student: ['Mike Brown', 'Mary Davis'] },
       ],
+      newClassroom: {
+          classname: '',
+          id: ''
+        }
     };
   },
   mounted() {
@@ -71,6 +87,17 @@ export default {
           console.error(error);
         });
     },
+    addStudent() {
+        axios
+          .post("http://localhost:8000/api/student", this.newStudent)
+          .then(response => {
+            this.students.push(response.data);
+            this.newStudent = {classroom_id: '',email: '', fname: '', lname: ''};
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      },
 
 
     deleteClassroom(classname) {
