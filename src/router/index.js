@@ -11,6 +11,7 @@ import AddStudent from '../components/AddStudent.vue';
 import GetStudent from '../components/GetStudentById.vue';
 import DeleteStudent from '../components/StudentSoftDelete.vue';
 import FrontPage from '../components/FrontPage.vue';
+import sendMessage from '../components/SendMessage.vue';
 
 
 
@@ -26,6 +27,7 @@ const routes = [
   { path: '/addstudent', component: AddStudent }, 
   { path: '/getstudent', component: GetStudent }, 
   { path: '/deletestudent', component: DeleteStudent }, 
+  { path: '/sendMessage', component: sendMessage },
 ];
 
 const router = createRouter({

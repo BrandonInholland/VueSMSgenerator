@@ -1,62 +1,96 @@
 <template>
-    <div class="container">
-      <input type="number" v-model="studentId" placeholder="Enter Student ID">
-      <button @click.prevent="getStudentById(studentId)" class="btn btn-primary">Get Student</button>
-      <div v-if="student">
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <caption>
+        <h2 style="white-space: nowrap;">List of Students</h2>
+      </caption>
+        <div class="d-flex justify-content-center">
+          <table class="table table-dark mx-auto">
+            <thead>
+              <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Classroom ID</th>            
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row" v-for="student in students">
+                <td class="table-cell">{{ student.fname }}</td>
+                <td class="table-cell">{{ student.lname }}</td>
+                <td class="table-cell">{{ student.email }}</td>
+                <td class="table-cell">{{ student.classroom_id }}</td>            
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <caption>
+        <h2 style="white-space: nowrap;">Find a Student by ID</h2>
+      </caption>
+      <div class="input-group mb-3">
+        <input type="number" v-model="studentId" placeholder="Enter Student ID" class="form-control">
+        <div class="input-group-append">
+          <button @click.prevent="getStudentById(studentId)" class="btn btn-primary">Get Student</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="container">
+    <div v-if="student" class="row">
+      <div class="col">
         <h2>{{ student.fname }} {{ student.lname }}</h2>
         <p>Email: {{ student.email }}</p>
         <p>Classroom ID: {{ student.classroom_id }}</p>
       </div>
     </div>
-<!-- AddStudent -->
-    <div class="container">
-      <caption>
-        <h2 style="white-space: nowrap;">Add a Student</h2>
-      </caption>
-      <div class="add-form">
-        <form @submit.prevent="addStudent">
-          <input type="text" v-model="newStudent.fname" placeholder="First Name">
-          <input type="text" v-model="newStudent.lname" placeholder="Last Name">
-          <input type="text" v-model="newStudent.email" placeholder="Email">
-          <input type="number" v-model="newStudent.classroom_id" placeholder="Classroom ID">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-      <div class="d-flex justify-content-center">
-        <table class="table table-dark mx-auto">
-          <thead>
-            <tr>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Classroom ID</th>            
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="table-row" v-for="student in students">
-              <td class="table-cell">{{ student.fname }}</td>
-              <td class="table-cell">{{ student.lname }}</td>
-              <td class="table-cell">{{ student.email }}</td>
-              <td class="table-cell">{{ student.classroom_id }}</td>            
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  </div>
 
-    <!-- StudentSoftDelete -->
-    <div class="container">
-      <caption>
-        <h2 style="white-space: nowrap;">Delete a Student</h2>
-      </caption>
-      <div class="add-form">
-        <form @submit.prevent="deleteStudent">
-          <input type="number" v-model="studentId" placeholder="Student ID">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <caption>
+          <h2 style="white-space: nowrap;">Add a Student</h2>
+        </caption>
+        <div class="add-form">
+          <form @submit.prevent="addStudent">
+            <input type="text" v-model="newStudent.fname" placeholder="First Name" class="form-control mb-3">
+            <input type="text" v-model="newStudent.lname" placeholder="Last Name" class="form-control mb-3">
+            <input type="text" v-model="newStudent.email" placeholder="Email" class="form-control mb-3">
+            <input type="number" v-model="newStudent.classroom_id" placeholder="Classroom ID" class="form-control mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>  
+
+    <div class="row">
+      <div class="col">
+        <caption>
+          <h2 style="white-space: nowrap;">Delete a Student</h2>
+        </caption>
+        <div class="add-form">
+          <form @submit.prevent="deleteStudent">
+            <input type="number" v-model="studentId" placeholder="Student ID" class="form-control mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
+
   
   <script>
   import axios from 'axios';

@@ -22,6 +22,9 @@
       <li class="nav-item">
         <a class="nav-link" href="getalllecturers">Lecturers</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="sendMessage">Send a Message!</a>
+      </li>
       
     </ul>
   </div>
