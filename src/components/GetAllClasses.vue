@@ -16,7 +16,7 @@
             <td class="table-cell">{{ classroom.id }}</td>
             <td class="table-cell">{{ classroom.classname }}</td>
             
-            <td>{{ classroom.student.map(s => s.id).join(', ') }}</td>
+            <td>{{ formatStudents(classroom.student) }}</td>
             <td class="table-cell">
               <button class="btn btn-danger" @click="deleteClassroom(classroom.id)">Delete</button>
             </td>
