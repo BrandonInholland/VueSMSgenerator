@@ -43,6 +43,7 @@
             <table class="table table-dark mx-auto">
                 <thead>
                     <tr>
+                        <th scope="col">Lecturer ID</th>
                         <th scope="col">Lecturer First Name</th>
                         <th scope="col">Lecturer Last Name</th>
                         <th scope="col">Lecturer Email</th>
@@ -52,12 +53,13 @@
                 </thead>
                 <tbody>
                     <tr class="table-row" v-for="lects in lecturer">
+                        <td class="table-cell">{{ lects.id }}</td>
                         <td class="table-cell">{{ lects.first_name }}</td>
                         <td class="table-cell">{{ lects.last_name }}</td>
                         <td class="table-cell">{{ lects.email }}</td>
                         <td>{{ lects.classroom.join(', ') }}</td>
                         <td class="table-cell">
-                            <button class="btn btn-danger" @click="deleteLecturer(lects.first_name)">Delete</button>
+                            <button class="btn btn-danger" @click="deleteLecturer(lects.id)">Delete</button>
                         </td>
                     </tr>
                 </tbody>
