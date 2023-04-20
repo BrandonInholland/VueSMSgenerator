@@ -16,7 +16,7 @@
             <td class="table-cell">{{ classroom.id }}</td>
             <td class="table-cell">{{ classroom.classname }}</td>
             
-            <td>{{ classroom.student.join(', ') }}</td>
+            <td>{{ classroom.student.map(s => s.id).join(', ') }}</td>
             <td class="table-cell">
               <button class="btn btn-danger" @click="deleteClassroom(classroom.classname)">Delete</button>
             </td>
@@ -86,6 +86,9 @@ export default {
           console.error(error);
         });
     },
+    formatStudents(students) {
+    return students.map(student => student.id).join(', ');
+  },
     
       addClassroom() {
         axios

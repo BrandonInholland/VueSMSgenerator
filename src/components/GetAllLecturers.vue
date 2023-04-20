@@ -1,32 +1,5 @@
 <template>
-    <div class="container">
-        <h2 style="white-space: nowrap;">List of Lecturers</h2>
-        <div class="d-flex justify-content-center">
-            <table class="table table-dark mx-auto">
-                <thead>
-                    <tr>
-                        <th scope="col">Lecturer First Name</th>
-                        <th scope="col">Lecturer Last Name</th>
-                        <th scope="col">Lecturer Email</th>
-                        <th scope="col">Class</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="table-row" v-for="lects in lecturer">
-                        <td class="table-cell">{{ lects.first_name }}</td>
-                        <td class="table-cell">{{ lects.last_name }}</td>
-                        <td class="table-cell">{{ lects.email }}</td>
-                        <td>{{ lects.classroom.join(', ') }}</td>
-                        <td class="table-cell">
-                            <button class="btn btn-danger" @click="deleteLecturer(lects.first_name)">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>
-    </div>
+    
 
     <div class="container">
         <caption>
@@ -62,6 +35,34 @@
                  <button type="submit" class="btn btn-primary">Add lecturer</button>
             </form>
             <div v-if="message">{{ message }}</div>
+        </div>
+    </div>
+    <div class="container">
+        <h2 style="white-space: nowrap;">List of Lecturers</h2>
+        <div class="d-flex justify-content-center">
+            <table class="table table-dark mx-auto">
+                <thead>
+                    <tr>
+                        <th scope="col">Lecturer First Name</th>
+                        <th scope="col">Lecturer Last Name</th>
+                        <th scope="col">Lecturer Email</th>
+                        <th scope="col">Class</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-row" v-for="lects in lecturer">
+                        <td class="table-cell">{{ lects.first_name }}</td>
+                        <td class="table-cell">{{ lects.last_name }}</td>
+                        <td class="table-cell">{{ lects.email }}</td>
+                        <td>{{ lects.classroom.join(', ') }}</td>
+                        <td class="table-cell">
+                            <button class="btn btn-danger" @click="deleteLecturer(lects.first_name)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
     
