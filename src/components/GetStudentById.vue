@@ -1,34 +1,6 @@
 <template>
 
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <caption>
-        <h2 style="white-space: nowrap;">List of Students</h2>
-      </caption>
-        <div class="d-flex justify-content-center">
-          <table class="table table-dark mx-auto">
-            <thead>
-              <tr>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Classroom ID</th>            
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="table-row" v-for="student in students">
-                <td class="table-cell">{{ student.fname }}</td>
-                <td class="table-cell">{{ student.lname }}</td>
-                <td class="table-cell">{{ student.email }}</td>
-                <td class="table-cell">{{ student.classroom_id }}</td>            
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
 
   <div class="container mt-5">
   <div class="row">
@@ -89,6 +61,35 @@
       </div>
     </div>
   </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <caption>
+        <h2 style="white-space: nowrap;">List of Students</h2>
+      </caption>
+        <div class="d-flex justify-content-center">
+          <table class="table table-dark mx-auto">
+            <thead>
+              <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Classroom ID</th>            
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row" v-for="student in students">
+                <td class="table-cell">{{ student.fname }}</td>
+                <td class="table-cell">{{ student.lname }}</td>
+                <td class="table-cell">{{ student.email }}</td>
+                <td class="table-cell">{{ student.classroom_id }}</td>            
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
   
@@ -113,6 +114,69 @@
     "lname": "Doe",
     "email": "jane.doe@example.com",
     "classroom_id": 102
+  },
+  {
+    "studentId": 1,
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john.doe@example.com",
+    "classroom_id": 101
+  },
+  {
+    "studentId": 1,
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john.doe@example.com",
+    "classroom_id": 101
+  },
+  {
+    "studentId": 1,
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john.doe@example.com",
+    "classroom_id": 101
+  },
+  {
+    "studentId": 1,
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john.doe@example.com",
+    "classroom_id": 101
+  },
+  {
+    "studentId": 1,
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john.doe@example.com",
+    "classroom_id": 101
+  },
+  {
+    "studentId": 1,
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john.doe@example.com",
+    "classroom_id": 101
+  },
+  {
+    "studentId": 1,
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john.doe@example.com",
+    "classroom_id": 101
+  },
+  {
+    "studentId": 1,
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john.doe@example.com",
+    "classroom_id": 101
+  },
+  {
+    "studentId": 1,
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john.doe@example.com",
+    "classroom_id": 101
   },],
         newStudent: {
           classroom_id: '',

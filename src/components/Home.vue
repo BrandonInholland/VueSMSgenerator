@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-5">
     <!-- List of Messages -->
     <div class="row">
       <div class="col">
@@ -64,15 +64,7 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-    </div>
-
-    
-  <!-- MessageWithLecturerMail -->
-  <div class ="container">
-    <div class="row">
-      <div class="col offset-md-6">
+        <!-- MessageWithLecturerMail -->
         <caption>
         <h2 style="white-space: nowrap;">Find a Message by LecturerMail</h2>
       </caption>
@@ -98,7 +90,9 @@
       </div>
     </div>
     </div>
-  
+
+    
+ 
 </template>
   
 <script>
@@ -127,7 +121,73 @@ export default {
     "lecturerEmail": "jane@example.com",
     "to": "james@example.com",
     "content": "Hi James, I wanted to follow up on our conversation from last week."
-  }]
+  }
+  ,
+  {
+    "messageID": 2,
+    "lecturerEmail": "jane@example.com",
+    "to": "john@example.com",
+    "content": "Sure, how about Tuesday at 2 PM?"
+  },
+  
+  {
+    "messageID": 2,
+    "lecturerEmail": "jane@example.com",
+    "to": "john@example.com",
+    "content": "Sure, how about Tuesday at 2 PM?"
+  },
+  
+  {
+    "messageID": 2,
+    "lecturerEmail": "jane@example.com",
+    "to": "john@example.com",
+    "content": "Sure, how about Tuesday at 2 PM?"
+  },
+  
+  {
+    "messageID": 2,
+    "lecturerEmail": "jane@example.com",
+    "to": "john@example.com",
+    "content": "Sure, how about Tuesday at 2 PM?"
+  },
+  
+  {
+    "messageID": 2,
+    "lecturerEmail": "jane@example.com",
+    "to": "john@example.com",
+    "content": "Sure, how about Tuesday at 2 PM?"
+  },
+  {
+    "messageID": 2,
+    "lecturerEmail": "jane@example.com",
+    "to": "john@example.com",
+    "content": "Sure, how about Tuesday at 2 PM?"
+  },
+  {
+    "messageID": 2,
+    "lecturerEmail": "jane@example.com",
+    "to": "john@example.com",
+    "content": "Sure, how about Tuesday at 2 PM?"
+  },
+  {
+    "messageID": 2,
+    "lecturerEmail": "jane@example.com",
+    "to": "john@example.com",
+    "content": "Sure, how about Tuesday at 2 PM?"
+  },
+  {
+    "messageID": 2,
+    "lecturerEmail": "jane@example.com",
+    "to": "john@example.com",
+    "content": "Sure, how about Tuesday at 2 PM?"
+  },
+  {
+    "messageID": 2,
+    "lecturerEmail": "jane@example.com",
+    "to": "john@example.com",
+    "content": "Sure, how about Tuesday at 2 PM?"
+  },
+]
     };
   },
   mounted() {
