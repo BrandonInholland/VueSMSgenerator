@@ -65,8 +65,7 @@ export default {
         { id: 4, classname: 'IT', student: ['Mike Brown', 'Mary Davis'] },
       ],
       newClassroom: {
-          classname: '',
-          id: ''
+          classname: '',          
         }
     };
   },
