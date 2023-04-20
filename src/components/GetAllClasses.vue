@@ -87,8 +87,9 @@ export default {
         });
     },
     formatStudents(students) {
-    return students.map(student => student.id).join(', ');
-  },
+  return students.map(student => `${student.fname} ${student.lname}`).join(', ');
+},
+
     
       addClassroom() {
         axios

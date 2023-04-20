@@ -1,61 +1,54 @@
 <template>
+  <form @submit.prevent="sendMessage">
     <div>
-      <form @submit.prevent="sendMessage">
-        <div>
-          <label for="from">From:</label>
-          <input type="text" id="from" v-model="messagePayload.From">
-        </div>
-        <div>
-          <label for="message">Message:</label>
-          <input type="text" id="message" v-model="messagePayload.Message">
-        </div>
-        <div>
-          <label for="to">To:</label>
-          <input type="text" id="to" v-model="recipient.Email">
-          <button type="button" @click="addRecipient">Add</button>
-          <ul>
-            <li v-for="(email, index) in messagePayload.To" :key="index">{{ email }}</li>
-          </ul>
-        </div>
-        <button type="submit">Send</button>
-      </form>
+      <label for="sender">From:</label>
+      <input type="text" id="sender" v-model="sender">
     </div>
-  </template>
+    <div>
+      <label for="recipients">To:</label>
+      <input type="text" id="recipients" v-model="recipients">
+    </div>
+    <div>
+      <label for="message">Message:</label>
+      <textarea id="message" v-model="message"></textarea>
+    </div>
+    <button type="submit">Send Message</button>
+  </form>
+</template>
+
   
   <script>
-  import axios from 'axios'
-  
-  export default {
-    data () {
-      return {
-        messagePayload: {
-          Message: '',
-          From: '',
-          To: []
-        },
-        recipient: {
-          Email: ''
+import axios from 'axios'
+
+export default {
+  data() {
+    return {
+      sender: '',
+      recipients: '',
+      message: ''
+    }
+  },
+  methods: {
+    sendMessage() {
+      const payload = {
+        action: 'message',
+        message: {
+          from: this.sender,
+          to: this.recipients.split(','),
+          message: this.message
         }
       }
-    },
-    methods: {
-      addRecipient () {
-        this.messagePayload.To.push(this.recipient)
-        this.recipient = { Email: '' }
-      },
-      sendMessage () {
-        axios
-          .get('http://localhost:3000/send', {
-            params: this.messagePayload
-          })
-          .then(response => {
-            console.log(response)
-          })
-          .catch(error => {
-            console.error(error)
-          })
-      }
+      axios.post('/send-message', payload)
+        .then(response => {
+          alert(response.data.message)
+        })
+        .catch(error => {
+          console.error(error)
+          alert('Error sending message')
+        })
     }
   }
-  </script>
+}
+</script>
+
   
