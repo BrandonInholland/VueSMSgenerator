@@ -24,7 +24,7 @@
                     </tr>
                 </tbody>
             </table>
-            
+
         </div>
     </div>
 
@@ -42,35 +42,29 @@
                 </select>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-        </div>
-    </div>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col">
-                <caption>
-                    <h2 style="white-space: nowrap;">Find a Lecturer by ID</h2>
-                </caption>
-                <div class="input-group mb-3">
-                    <input type="number" v-model="lecturerId" placeholder="Enter Lecturer ID" class="form-control">
-                    <div class="input-group-append">
-                        <button @click.prevent="getLecturerById(lecturerId)" class="btn btn-primary">Get Lecturer</button>
-                    </div>
+            <br>
+            <caption>
+                <h2 style="white-space: nowrap;">Find a Lecturer by ID</h2>
+            </caption>
+            <div class="input-group mb-3">
+                <input type="number" v-model="lecturerId" placeholder="Enter Lecturer ID" class="form-control">
+                <div class="input-group-append">
+                    <button @click.prevent="getLecturerById(lecturerId)" class="btn btn-primary">Get Lecturer</button>
                 </div>
             </div>
+            <br>
+            <h2>Add Lecturer to Class</h2>
+            <form @submit.prevent="addLecturer">
+                <label for="lecturerID">Lecturer ID:</label>
+                <input type="number" id="lecturerID" v-model="lecturerID">
+                <label for="classID">Class ID:</label>
+                <input type="number" id="classID" v-model="classID">
+                 <button type="submit" class="btn btn-primary">Add lecturer</button>
+            </form>
+            <div v-if="message">{{ message }}</div>
         </div>
     </div>
-
-    <div>
-    <h2>Add Lecturer to Class</h2>
-    <form @submit.prevent="addLecturer">
-      <label for="lecturerID">Lecturer ID:</label>
-      <input type="number" id="lecturerID" v-model="lecturerID">
-      <label for="classID">Class ID:</label>
-      <input type="number" id="classID" v-model="classID">
-      <button type="submit">Add Lecturer</button>
-    </form>
-    <div v-if="message">{{ message }}</div>
-  </div>
+    
 </template>
 <style scoped>
 .delete-button {
@@ -150,17 +144,17 @@ export default {
                 });
         },
         async addLecturer() {
-      try {
-        const response = await axios.post('/api/add-lecturer-to-class', {
-          lecturerID: this.lecturerID,
-          classID: this.classID
-        });
-        this.message = response.data;
-      } catch (error) {
-        this.message = error.message;
-      }
-    }
-  
+            try {
+                const response = await axios.post('/api/add-lecturer-to-class', {
+                    lecturerID: this.lecturerID,
+                    classID: this.classID
+                });
+                this.message = response.data;
+            } catch (error) {
+                this.message = error.message;
+            }
+        }
+
     }
 }
 </script>
