@@ -27,7 +27,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory('http://localhost:8383/'), // Replace with your actual URL
   routes: routes
 })
 export default router

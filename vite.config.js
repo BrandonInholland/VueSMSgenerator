@@ -10,5 +10,15 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  server: {
+    port: 8383, // change this to the desired port number
+  },
+  build: {
+    rollupOptions: {
+      external: ['bootstrap']
+    }
   }
 })
+
+
