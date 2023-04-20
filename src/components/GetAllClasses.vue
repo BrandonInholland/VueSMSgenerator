@@ -18,7 +18,7 @@
             
             <td>{{ classroom.student.map(s => s.id).join(', ') }}</td>
             <td class="table-cell">
-              <button class="btn btn-danger" @click="deleteClassroom(classroom.classname)">Delete</button>
+              <button class="btn btn-danger" @click="deleteClassroom(classroom.id)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -103,9 +103,9 @@ export default {
       },
 
 
-    deleteClassroom(classname) {
+    deleteClassroom(ID) {
       axios
-        .delete("http://localhost:8000/api/classrooms/" + classname)
+        .delete(`http://localhost:8000/api/classroom/delete/${ID}`)
         .then(response => {
           console.log(response);
           this.fetchClassrooms();
