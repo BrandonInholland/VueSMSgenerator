@@ -7,7 +7,7 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Classname</th>            
-            <th scope="col">Student_ID</th>
+            <th scope="col">Students</th>
             <th scope="col">Delete?</th>
           </tr>
         </thead>
