@@ -5,16 +5,17 @@
       <table class="table table-dark mx-auto">
         <thead>
           <tr>
-            <th scope="col">Classname</th>
-            <th scope="col">Class ID</th>
+            <th scope="col">ID</th>
+            <th scope="col">Classname</th>            
             <th scope="col">Student_ID</th>
             <th scope="col">Delete?</th>
           </tr>
         </thead>
         <tbody>
           <tr class="table-row" v-for="classroom in classrooms">
-            <td class="table-cell">{{ classroom.classname }}</td>
             <td class="table-cell">{{ classroom.id }}</td>
+            <td class="table-cell">{{ classroom.classname }}</td>
+            
             <td>{{ classroom.student.join(', ') }}</td>
             <td class="table-cell">
               <button class="btn btn-danger" @click="deleteClassroom(classroom.classname)">Delete</button>
@@ -33,7 +34,6 @@
       <div class="add-form">
         <form @submit.prevent="addClassroom">
           <input type="text" v-model="newClassroom.classname" placeholder="Classname">
-          <input type="text" v-model="newClassroom.id" placeholder="Class ID">
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
@@ -93,7 +93,7 @@ export default {
           .post("http://localhost:8000/api/classrooms", this.newClassroom)
           .then(response => {
             this.classrooms.push(response.data);
-            this.newClassroom = { classname: '', id: '' };
+            this.newClassroom = { classname: ''};
           })
           .catch(error => {
             console.error(error);
