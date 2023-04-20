@@ -87,12 +87,13 @@ export default {
           console.error(error);
         });
     },
-    addStudent() {
+    
+      addClassroom() {
         axios
-          .post("http://localhost:8000/api/student", this.newStudent)
+          .post("http://localhost:8000/api/classrooms", this.newClassroom)
           .then(response => {
-            this.students.push(response.data);
-            this.newStudent = {classroom_id: '',email: '', fname: '', lname: ''};
+            this.classrooms.push(response.data);
+            this.newClassroom = { classname: '', id: '' };
           })
           .catch(error => {
             console.error(error);
