@@ -37,9 +37,9 @@
         <h2 style="white-space: nowrap;">Find a Student by ID</h2>
       </caption>
       <div class="input-group mb-3">
-        <input type="number" v-model="studentId" placeholder="Enter Student ID" class="form-control">
+        <input type="number" v-model="studentId1" placeholder="Enter Student ID" class="form-control">
         <div class="input-group-append">
-          <button @click.prevent="getStudentById(studentId)" class="btn btn-primary">Get Student</button>
+          <button @click.prevent="getStudentById(studentId1)" class="btn btn-primary">Get Student</button>
         </div>
       </div>
     </div>
